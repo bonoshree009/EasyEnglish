@@ -19,8 +19,8 @@ const url="https://openapi.programming-hero.com/api/levels/all"
         // 3.create element
         let btndiv = document.createElement("div")
         btndiv.innerHTML =`
-         <button onclick="loadword(${post.level_no})" class="btn btn-outline  bg-blue-700 text-white"> <i class="fa-solid fa-book"></i> lesson-${post.level_no}</button>
-         `
+         <button onclick="loadword(${post.level_no})" class="btn btn-outline 
+          bg-blue-700 text-white lesson-btn" id="lesson-btn${post.level_no}"> <i class="fa-solid fa-book"></i> lesson-${post.level_no}</button> `
     // 4.append div
     container.appendChild(btndiv)
     });
@@ -29,10 +29,22 @@ const url="https://openapi.programming-hero.com/api/levels/all"
 
  const loadword =(id)=>{
     const url =`https://openapi.programming-hero.com/api/level/${id}`
+    fetch(url).then(res =>res.json()).then((datas) => {
+      removeclass()
+      const clicked_btn = document.getElementById(`lesson-btn${id}`);
+      clicked_btn.classList.add("active")
+      allword(datas.data);
+    })
+    }
+
+    const removeclass= ()=>{
+      const btnclass = document.querySelectorAll(".lesson-btn")
+     // console.log(btnclass)
+      btnclass.forEach((btn)=>btn.classList.remove("active"));
+    }
     
-    fetch(url).then(res =>res.json()).then(datas => allword(datas.data))
-    
- }
+ 
+
  const allword =(words)=>{
 const cartcon = document.getElementById("cart-container")
     cartcon.innerHTML =""
@@ -55,7 +67,7 @@ const cartcon = document.getElementById("cart-container")
          <p class="text-[16px] py-3 font-semibold">Meaning /Pronounciation</p>
          <h1 class="text-xl font-bangla font-semibold">"${word.meaning ? word.meaning : "Not found"}"</h1>
          <div class="flex justify-between items-baseline mt-10">
-         <button class="p-2 bg-[#ecf2fa] rounded hover:bg-[#ecf2fa80]"><i class="fa-solid fa-circle-info"></i></button>
+         <button onclick= "my_modal_5.showModal()" class="p-2 bg-[#ecf2fa] rounded hover:bg-[#ecf2fa80]"><i class="fa-solid fa-circle-info"></i></button>
          <button class="p-2 bg-[#ecf2fa] rounded hover:bg-[#ecf2fa80]"><i class="fa-solid fa-volume-high"></i></button>
         </div>
      </div>
@@ -66,4 +78,5 @@ const cartcon = document.getElementById("cart-container")
         
 
  }
+ 
  loaddata()

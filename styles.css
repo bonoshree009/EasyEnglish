@@ -5,3 +5,8 @@
       font-family: "Hind Siliguri", sans-serif;
 
 }   
+.active{
+      background-color: rgb(239, 249, 252);
+      border: 1px solid blue;
+      color:blue
+}
