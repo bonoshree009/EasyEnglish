@@ -66,7 +66,9 @@ const cartcon = document.getElementById("cart-container")
           <h1 class="text-xl">${word.word ? word.word : "Not found"} </h1>
          <p class="text-[16px] py-3 font-semibold">Meaning /Pronounciation</p>
          <h1 class="text-xl font-bangla font-semibold">"${word.meaning ? word.meaning : "Not found"}"</h1>
-         <div class="flex justify-between items-baseline mt-10">
+
+         <div class="flex justify-between items-center mt-10">
+
          <button onclick= "my_modal_5.showModal()" class="p-2 bg-[#ecf2fa] rounded hover:bg-[#ecf2fa80]"><i class="fa-solid fa-circle-info"></i></button>
          <button class="p-2 bg-[#ecf2fa] rounded hover:bg-[#ecf2fa80]"><i class="fa-solid fa-volume-high"></i></button>
         </div>
@@ -78,5 +80,9 @@ const cartcon = document.getElementById("cart-container")
         
 
  }
+
+
+
+
  
  loaddata()
